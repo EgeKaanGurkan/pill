@@ -33,6 +33,7 @@ class IllegalCharError(Error):
     def __init__(self, pos_start, pos_end, details):
         super().__init__(pos_start, pos_end, 'Illegal Character', details)
 
+
 class InvalidSyntaxError(Error):
     def __init__(self, pos_start, pos_end, details):
         super().__init__(pos_start, pos_end, 'Invalid Syntax', details)
@@ -78,6 +79,7 @@ TT_LPAREN = 'LPAREN'
 TT_RPAREN = 'RPAREN'
 TT_EOF = 'EOF'
 
+
 class Token:
     def __init__(self, type_, value=None, pos_start=None, pos_end=None):
         self.type = type_
@@ -87,7 +89,6 @@ class Token:
             self.pos_start = pos_start.copy()
             self.pos_end = pos_start.copy()
             self.pos_end.advance()
-
 
         if pos_end:
             self.pos_end = pos_end.copy()
@@ -190,6 +191,7 @@ class BinOpNode:
     def __repr__(self):
         return f'({self.left_node}, {self.op_tok}, {self.right_node})'
 
+
 class UnaryOpNode:
     def __init__(self, op_tok, node):
         self.op_tok = op_tok
@@ -197,6 +199,7 @@ class UnaryOpNode:
 
     def __repr__(self):
         return f'{self.op_tok}: {self.node}'
+
 
 #######################################
 # PARSE RESULT
@@ -214,6 +217,7 @@ class ParseResult:
             return res.node
 
         return res
+
     def success(self, node):
         self.node = node
         return self
@@ -221,6 +225,7 @@ class ParseResult:
     def failure(self, error):
         self.error = error
         return self
+
 
 #######################################
 # PARSER
@@ -243,7 +248,8 @@ class Parser:
     def parse(self):
         res = self.expr()
         if not res.error and self.current_tok.type != TT_EOF:
-            return res.failure(InvalidSyntaxError(self.current_tok.pos_start, self.current_tok.pos_end, "Expected '+', '-', '*' or '/'"))
+            return res.failure(InvalidSyntaxError(self.current_tok.pos_start, self.current_tok.pos_end,
+                                                  "Expected '+', '-', '*' or '/'"))
         return res
 
     def factor(self):
@@ -269,7 +275,8 @@ class Parser:
                 res.register(self.advance())
                 return res.success(expr)
             else:
-                 return res.failure(InvalidSyntaxError(self.current_tok.pos_start, self.current_tok.pos_end, "Expected ')'"))
+                return res.failure(
+                    InvalidSyntaxError(self.current_tok.pos_start, self.current_tok.pos_end, "Expected ')'"))
 
         return res.failure(InvalidSyntaxError(tok.pos_start, tok.pos_end, 'Expected int or float'))
 

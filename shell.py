@@ -1,5 +1,6 @@
 import pill
 print("Write 'exit' or 'quit' to exit pill")
+
 while True:
     text = input('pill > ')
     if text == "exit" or text == "quit":
