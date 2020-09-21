@@ -4,8 +4,10 @@ The language is called "Pill".
 
 ## Progress
 
-The lexer and the parser are done.
+The lexer, parser and the interpreter are done.
 
 ## TODO
 
-Interpreter
+Variables!
+
+**Note:** I am directly following [this](https://www.youtube.com/playlist?list=PLZQftyCk7_SdoVexSmwy_tBgs7P0b97yD) tutorial series which is about implementing a version of BASIC.

@@ -1,5 +1,5 @@
 import pill
-print("Right now only the lexer and parser are implemented. Try typing in 1 + 2 "
+print("Right now only the lexer, parser and the interpreter are implemented. Try typing in 1 + 2 "
       "or any arithmetic condition to see them work. \n"
       "Write 'exit' or 'quit' to exit pill. ")
 
