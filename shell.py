@@ -1,5 +1,7 @@
 import pill
-print("Write 'exit' or 'quit' to exit pill")
+print("Right now only the lexer and parser are implemented. Try typing in 1 + 2 "
+      "or any arithmetic condition to see them work. \n"
+      "Write 'exit' or 'quit' to exit pill. ")
 
 while True:
     text = input('pill > ')
